@@ -2,6 +2,29 @@
 name = "zslip"
 version = "0.1.0"
 edition = "2021"
+description = "A demonstration tool for the Zip Slip vulnerability, focusing on educational and security awareness purposes."
+authors = ["Your Name dj@codetestcode.io"]
+repository = "https://github.com/copyleftdev/zslip"
+license = "MIT"
+readme = "README.md"
+keywords = ["zip", "vulnerability", "security", "rust"]
+categories = ["security", "tools", "network-programming"]
+
 
 [dependencies]
-zip = "2.2.0"
+# `zip` crate for creating and manipulating ZIP archives. Enables `deflate` compression by default.
+zip = { version = "2.2.0", features = ["deflate"] }
+
+# Optional dependencies for enhanced functionalities
+# Uncomment the following lines if you want to add these features:
+# log = "0.4.17"            # Add structured logging capabilities
+# aes = { version = "0.7", optional = true } # Optional support for AES encryption
+
+[features]
+# Define features for conditional compilation
+aes-crypto = ["zip/aes"]    # Feature to enable AES encryption for the `zip` crate
+
+[profile.release]
+opt-level = 3               # Maximum optimization for release builds
+lto = "thin"                # Link Time Optimization for smaller binary size
+debug = false               # Disable debug symbols for release builds
