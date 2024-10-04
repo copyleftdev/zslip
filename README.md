@@ -58,23 +58,8 @@ If you’re developing or maintaining software that handles zip file extractions
 1. **Clone the Repository**:
 
     ```bash
-    git clone https://github.com/your-zip-slip-demo.git
+    git clone https://github.com/copyleftdev/zslip.git
     cd zip_slip_demo
-    ```
-
-    Alternatively, if you prefer starting from scratch:
-
-    ```bash
-    cargo new zip_slip_demo
-    cd zip_slip_demo
-    ```
-
-2. **Add Dependencies:**
-   Add the following to your `Cargo.toml` file:
-
-    ```toml
-    [dependencies]
-    zip = "0.6"
     ```
 
 3. **Compile the Project**:
@@ -93,27 +78,6 @@ cargo run -- --path='../../../../../tmp/malicious_file.txt' --data='This is a ma
 - **--path**: The relative path you want to include in the zip file.
 - **--data**: The content of the file.
 - **malicious.zip**: The output zip file.
-
-### **Testing the Malicious Zip:**
-1. Extract the zip file using a tool like `unzip`:
-
-    ```bash
-    unzip malicious.zip
-    ```
-
-2. Check the `/tmp` directory to see if the file was created outside the intended extraction folder:
-
-    ```bash
-    cat /tmp/malicious_file.txt
-    ```
-
-If the extraction tool is vulnerable, the file should contain:
-
-```
-This is a malicious file!
-```
-
----
 
 ### **Additional Reference: System Path Structures**
 For more details on common directory paths across different operating systems (Linux, Windows, and macOS), refer to the [`PATHS`](PATHS.md) file. This document contains a comprehensive list of critical system paths, user-specific directories, logs, and configuration file locations for each OS. Understanding these paths is crucial for both offense and defense, ensuring you know exactly where files may be written or modified.
